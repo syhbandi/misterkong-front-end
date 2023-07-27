@@ -21,6 +21,11 @@ const links = [
   },
   {
     id: 4,
+    title: "Pusat bantuan",
+    link: "bantuan",
+  },
+  {
+    id: 5,
     title: "Blog",
     link: "blog",
   },

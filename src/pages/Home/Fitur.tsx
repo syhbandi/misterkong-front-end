@@ -30,13 +30,14 @@ const Fitur = () => {
             variants={fitursVariant}
             initial="off"
             whileInView="on"
-            className={`my-10 relative`}
+            className={`relative`}
             key={index}
+            viewport={{ once: true }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto max-w-7xl px-6 py-10 md:py-20">
               <div className={`flex item-center ${isOdd ? "justify-end" : ""}`}>
                 <img
-                  className="w-full h-full md:w-[500px] md:h-[500px] object-cover rounded-md hidden md:block "
+                  className="w-full h-full md:w-[500px] md:h-[500px] object-cover rounded-3xl shadow-xl hidden md:block "
                   src={item.image}
                 />
               </div>
@@ -52,7 +53,7 @@ const Fitur = () => {
                   {item.judul}
                 </motion.h1>
                 <img
-                  className="w-full h-full md:w-[500px] md:h-[500px] object-cover rounded-md md:hidden mb-10"
+                  className="w-full h-full md:w-[500px] md:h-[500px] object-cover rounded-3xl shadow-xl md:hidden mb-10"
                   src={item.image}
                 />
                 <motion.p
