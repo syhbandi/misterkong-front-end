@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import appStore from "../../assets/app-store.png";
 import playStore from "../../assets/google-play.png";
+
+const socialLink = [
+  {
+    link: "https://www.facebook.com/misterkongpos",
+    icon: <FaFacebook />,
+  },
+  {
+    link: "https://www.instagram.com/misterkongpos",
+    icon: <FaInstagram />,
+  },
+  {
+    link: "https://twitter.com/MisterKong6",
+    icon: <FaTwitter />,
+  },
+];
 
 const FOoter = () => {
   return (
@@ -40,25 +55,12 @@ const FOoter = () => {
           </div>
           <div className="flex flex-col gap-3">
             <h1 className="text-lg font-semibold">Tetap terhubung</h1>
-            <div className="flex items-center  gap-5">
-              <a
-                href="https://www.facebook.com/misterkongpos#intend"
-                target="_blank"
-              >
-                <FaFacebook />
-              </a>
-              <a
-                href="https://www.instagram.com/misterkongpos/#intend"
-                target="_blank"
-              >
-                <FaInstagram />
-              </a>
-              <a href="" target="_blank">
-                <FaYoutube />
-              </a>
-              <a href="https://twitter.com/MisterKong6#intend" target="_blank">
-                <FaTwitter />
-              </a>
+            <div className="flex items-center gap-5">
+              {socialLink.map(({ link, icon }, index) => (
+                <a href={link} target="_blank" key={index}>
+                  {icon}
+                </a>
+              ))}
             </div>
             <h1 className="text-lg font-semibold">Unduh</h1>
             <div className="flex items-center gap-3">
