@@ -1,9 +1,9 @@
 import kongRide from "../assets/KongRide.svg";
 import kongCar from "../assets/KongCar.svg";
 import kongSend from "../assets/KongSend.svg";
-import kongMeal from "../assets/kongMeal.svg";
-import kongMart from "../assets/kongMart.svg";
-import kongShop from "../assets/kongShop.svg";
+import kongMeal from "../assets/KongMeal.svg";
+import kongMart from "../assets/KongMart.svg";
+import kongShop from "../assets/KongShop.svg";
 const layanan = [
   {
     id: 1,
