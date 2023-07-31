@@ -2,6 +2,7 @@ import Fitur from "./Fitur";
 import Gabung from "./Gabung";
 import Hero from "./Hero";
 import Layanan from "./Layanan";
+import Unduh from "./Unduh";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Fitur />
       <Gabung />
       <Layanan />
+      <Unduh />
     </>
   );
 };

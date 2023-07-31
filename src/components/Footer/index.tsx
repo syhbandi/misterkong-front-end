@@ -5,7 +5,7 @@ import playStore from "../../assets/google-play.png";
 
 const FOoter = () => {
   return (
-    <footer className="py-10 bg-blue-600 bg-opacity-10 font-poppins ">
+    <footer className="py-10 bg-gray-900 font-poppins text-gray-200">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 pb-5 border-b border-gray-400">
           <div className="flex flex-col gap-3">
@@ -62,20 +62,28 @@ const FOoter = () => {
             </div>
             <h1 className="text-lg font-semibold">Unduh</h1>
             <div className="flex items-center gap-3">
-              <Link to={""}>
+              <a
+                href="https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.kong.market"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img
                   src={playStore}
                   alt="google play store"
                   className="max-h-[30px]"
                 />
-              </Link>
-              <Link to={""}>
+              </a>
+              <a
+                href="https://apps.apple.com/id/app/misterkong/id1611887662"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img
                   src={appStore}
                   alt="apple store"
                   className="max-h-[30px]"
                 />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

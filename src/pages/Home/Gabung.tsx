@@ -56,6 +56,7 @@ const Gabung = () => {
                 initial="off"
                 whileInView="on"
                 custom={id}
+                viewport={{ once: true }}
               >
                 {icon}
                 <h1 className="text-lg font-semibold font-poppins mb-5 mt-10">

@@ -1,6 +1,7 @@
 import movie from "../../assets/Teaser.webm";
 import { BsDownload } from "react-icons/bs";
 import { motion } from "framer-motion";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const containerVariants = {
   off: {
@@ -54,17 +55,19 @@ const Hero = () => {
             #kongTemanYangBaik
           </motion.p>
 
-          <motion.button
-            variants={childVariants}
-            whileHover={"hover"}
-            className="bg-kong  py-3 px-9 rounded-md border border-kong md:mr-auto mt-5 font-poppins"
-          >
-            <span className="text-black text-lg font-semibold flex items-center justify-center gap-3">
-              <BsDownload />
-              Unduh sekarang
-            </span>
-            <span></span>
-          </motion.button>
+          <AnchorLink href={"#unduh"}>
+            <motion.button
+              variants={childVariants}
+              whileHover={"hover"}
+              className="bg-kong  py-3 px-9 rounded-md border border-kong md:mr-auto mt-5 font-poppins"
+            >
+              <span className="text-black text-lg font-semibold flex items-center justify-center gap-3">
+                <BsDownload />
+                Unduh sekarang
+              </span>
+              <span></span>
+            </motion.button>
+          </AnchorLink>
         </motion.div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 -z-[2]"></div>
