@@ -1,5 +1,5 @@
 import kongRide from "../assets/KongRide.svg";
-import kongCar from "../assets/kongCar.svg";
+import kongCar from "../assets/KongCar.svg";
 import kongSend from "../assets/KongSend.svg";
 import kongMeal from "../assets/kongMeal.svg";
 import kongMart from "../assets/kongMart.svg";
