@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
+import { links } from "../../data/navbarLinks";
+import Dropdown from "../Dropdown";
 
-type link = {
-  id: number;
-  link: string;
-  title: string;
-};
-
-type Props = {
-  links: link[];
-};
-const MobileNav = ({ links }: Props) => {
+const MobileNav = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -39,16 +32,24 @@ const MobileNav = ({ links }: Props) => {
             </button>
           </div>
           <div className="flex flex-col">
-            {links.map((nav) => (
-              <NavLink
-                to={nav.link}
-                key={nav.id}
-                className={"py-2 px-4 font-medium text-black"}
-                onClick={() => setOpen(false)}
-              >
-                {nav.title}
-              </NavLink>
-            ))}
+            {links.map((nav) =>
+              !nav.children ? (
+                <NavLink
+                  to={nav.link}
+                  key={nav.id}
+                  className={"py-2 px-4 font-medium text-black"}
+                  onClick={() => setOpen(false)}
+                >
+                  {nav.title}
+                </NavLink>
+              ) : (
+                <Dropdown
+                  title={nav.title}
+                  links={nav.children}
+                  className={"py-2 px-4 font-medium text-black"}
+                />
+              )
+            )}
           </div>
         </div>
       </div>

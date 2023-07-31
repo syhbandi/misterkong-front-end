@@ -3,34 +3,6 @@ import { useEffect, useState } from "react";
 import LgNav from "./LgNav";
 import MobileNav from "./MobileNav";
 
-const links = [
-  {
-    id: 1,
-    title: "Beranda",
-    link: "/",
-  },
-  {
-    id: 2,
-    title: "Tentang kami",
-    link: "tentang-kami",
-  },
-  {
-    id: 3,
-    title: "Produk",
-    link: "produk",
-  },
-  {
-    id: 4,
-    title: "Pusat bantuan",
-    link: "bantuan",
-  },
-  {
-    id: 5,
-    title: "Blog",
-    link: "blog",
-  },
-];
-
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
 
@@ -61,9 +33,9 @@ const Navbar = () => {
           MisterKong
         </Link>
 
-        <LgNav links={links} />
+        <LgNav />
 
-        <MobileNav links={links} />
+        <MobileNav />
       </div>
     </nav>
   );

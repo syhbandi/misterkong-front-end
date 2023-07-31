@@ -28,49 +28,50 @@ const childVariants = {
 const Hero = () => {
   return (
     <header className="w-full h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-2 container max-w-7xl mx-auto px-6 h-full">
-        <motion.div
-          variants={containerVariants}
-          initial="off"
-          whileInView="on"
-          className="text-white flex flex-col justify-center"
-        >
-          <motion.h1
-            variants={childVariants}
-            className="text-4xl md:text-6xl font-medium text-center md:text-left font-poppins"
+      <div className="w-full h-full bg-black bg-opacity-75">
+        <div className="grid grid-cols-1 md:grid-cols-2 container max-w-7xl mx-auto px-6 h-full">
+          <motion.div
+            variants={containerVariants}
+            initial="off"
+            whileInView="on"
+            className="text-white flex flex-col justify-center"
           >
-            Super App
-          </motion.h1>
-          <motion.p
-            variants={childVariants}
-            className="text-base md:text-2xl mt-5 text-center md:text-left font-roboto"
-          >
-            Nikmati kemudahan layanan kami, mulai dari Transportasi, Pengiriman
-            Barang, Food & Beverage, dan kebutuhan lainnya.
-          </motion.p>
-          <motion.p
-            variants={childVariants}
-            className="text-base md:text-2xl mt-5 font-medium text-center md:text-left font-roboto"
-          >
-            #kongTemanYangBaik
-          </motion.p>
-
-          <AnchorLink href={"#unduh"}>
-            <motion.button
+            <motion.h1
               variants={childVariants}
-              whileHover={"hover"}
-              className="bg-kong  py-3 px-9 rounded-md border border-kong md:mr-auto mt-5 font-poppins"
+              className="text-4xl md:text-6xl font-medium text-center md:text-left font-poppins"
             >
-              <span className="text-black text-lg font-semibold flex items-center justify-center gap-3">
-                <BsDownload />
-                Unduh sekarang
-              </span>
-              <span></span>
-            </motion.button>
-          </AnchorLink>
-        </motion.div>
+              Super App
+            </motion.h1>
+            <motion.p
+              variants={childVariants}
+              className="text-base md:text-2xl mt-5 text-center md:text-left font-roboto"
+            >
+              Nikmati kemudahan layanan kami, mulai dari Transportasi,
+              Pengiriman Barang, Food & Beverage, dan kebutuhan lainnya.
+            </motion.p>
+            <motion.p
+              variants={childVariants}
+              className="text-base md:text-2xl mt-5 font-medium text-center md:text-left font-roboto"
+            >
+              #kongTemanYangBaik
+            </motion.p>
+
+            <AnchorLink href={"#unduh"}>
+              <motion.button
+                variants={childVariants}
+                whileHover={"hover"}
+                className="bg-kong  py-3 px-9 rounded-md border border-kong md:mr-auto mt-5 font-poppins"
+              >
+                <span className="text-black text-lg font-semibold flex items-center justify-center gap-3">
+                  <BsDownload />
+                  Unduh sekarang
+                </span>
+                <span></span>
+              </motion.button>
+            </AnchorLink>
+          </motion.div>
+        </div>
       </div>
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 -z-[2]"></div>
       <video
         src={movie}
         autoPlay

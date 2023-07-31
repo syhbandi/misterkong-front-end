@@ -30,7 +30,7 @@ const Fitur = () => {
             variants={fitursVariant}
             initial="off"
             whileInView="on"
-            className={`relative`}
+            className={`relative ${isOdd ? "bg-kong bg-opacity-20" : ""}`}
             key={index}
             viewport={{ once: true }}
           >
