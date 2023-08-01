@@ -18,7 +18,7 @@ const socialLink = [
   },
 ];
 
-const FOoter = () => {
+const Footer = () => {
   return (
     <footer className="py-10 bg-kong bg-opacity-10 font-poppins">
       <div className="container mx-auto max-w-7xl px-6">
@@ -101,4 +101,4 @@ const FOoter = () => {
   );
 };
 
-export default FOoter;
+export default Footer;
