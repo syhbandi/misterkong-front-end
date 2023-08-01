@@ -23,27 +23,13 @@ const img = {
   },
 };
 
-const leftItem = {
+const item = {
   off: {
-    x: -100,
+    y: 200,
     opacity: 0,
   },
   on: (i: number) => ({
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.2 * i,
-      duration: 0.5,
-    },
-  }),
-};
-const rightItem = {
-  off: {
-    opacity: 0,
-    x: 100,
-  },
-  on: (i: number) => ({
-    x: 0,
+    y: 0,
     opacity: 1,
     transition: {
       delay: 0.2 * i,
@@ -59,11 +45,11 @@ const Layanan = () => {
         <h1 className="text-5xl font-semibold font-poppins  text-center mb-10">
           Permudah hidupmu
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="flex flex-col justify-center">
             {layanan.slice(0, layanan.length / 2).map((l) => (
               <motion.div
-                variants={leftItem}
+                variants={item}
                 custom={l.id}
                 initial="off"
                 whileInView="on"
@@ -104,7 +90,7 @@ const Layanan = () => {
           <div className="flex flex-col justify-center">
             {layanan.slice(layanan.length / 2, layanan.length).map((l) => (
               <motion.div
-                variants={rightItem}
+                variants={item}
                 initial="off"
                 whileInView="on"
                 custom={l.id}
