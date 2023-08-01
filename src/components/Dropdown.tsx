@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaCaretDown } from "react-icons/fa";
@@ -34,37 +34,45 @@ const showMenu = {
 
 const Dropdown = ({ title, links, className }: Props) => {
   const [shown, setShown] = useState(false);
+  const ref = useRef(null);
 
-  const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log(e.target);
-  };
+  useEffect(() => {
+    const onWindowClick = (e: any) => {
+      if (e.target !== ref.current) return setShown(false);
+    };
+
+    window.addEventListener("click", onWindowClick);
+
+    return () => {
+      window.removeEventListener("click", onWindowClick);
+    };
+  });
 
   return (
-    <motion.div
-      onHoverStart={() => setShown(true)}
-      onHoverEnd={() => setShown(false)}
-      onClick={onClick}
-    >
+    <motion.div onClick={() => setShown((prev) => !prev)}>
       <span
         className={`cursor-pointer font-medium inline-flex items-center ${className}`}
+        ref={ref}
       >
         {title}
         <FaCaretDown />
       </span>
       <motion.ul
+        key={title}
         variants={showMenu}
         initial="exit"
         animate={shown ? "enter" : "exit"}
-        className="absolute bg-white mt-1 border border-blue-strong border-opacity-50 rounded-sm p-2"
+        className="absolute bg-white text-black mt-1 border border-blue-strong border-opacity-50 rounded-md p-2 shadow-md"
       >
         {links.map((link) => (
-          <Link to={link.link}>
+          <Link to={link.link} key={link.id}>
             <motion.li
               whileHover={{
                 color: "#FFB703",
                 x: 2,
               }}
               className="cursor-pointer p-1 text-blue-primary"
+              key={link.id}
             >
               {link.title}
             </motion.li>

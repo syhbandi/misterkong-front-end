@@ -47,6 +47,7 @@ const MobileNav = () => {
                   title={nav.title}
                   links={nav.children}
                   className={"py-2 px-4 font-medium text-black"}
+                  key={nav.id}
                 />
               )
             )}
