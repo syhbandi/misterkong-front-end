@@ -56,7 +56,7 @@ const Hero = () => {
               #kongTemanYangBaik
             </motion.p>
 
-            <AnchorLink href={"#unduh"}>
+            <AnchorLink href={"#unduh"} className="text-center md:text-left">
               <motion.button
                 variants={childVariants}
                 whileHover={"hover"}
