@@ -34,7 +34,7 @@ const Fitur = () => {
             key={index}
             viewport={{ once: true }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto max-w-7xl px-6 py-10 md:py-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 container mx-auto max-w-7xl px-6 py-10 md:py-20 gap-10">
               <div className={`flex item-center ${isOdd ? "justify-end" : ""}`}>
                 <img
                   className="w-full h-full md:w-[500px] md:h-[500px] object-cover rounded-3xl shadow-xl hidden md:block "
