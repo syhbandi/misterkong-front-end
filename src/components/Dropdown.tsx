@@ -49,14 +49,14 @@ const Dropdown = ({ title, links, className }: Props) => {
   });
 
   return (
-    <motion.div onClick={() => setShown((prev) => !prev)}>
-      <span
-        className={`cursor-pointer font-medium inline-flex items-center ${className}`}
+    <div onClick={() => setShown((prev) => !prev)}>
+      <div
+        className={`cursor-pointer inline-flex items-center select-none ${className}`}
         ref={ref}
       >
         {title}
         <FaCaretDown />
-      </span>
+      </div>
       <motion.ul
         key={title}
         variants={showMenu}
@@ -79,7 +79,7 @@ const Dropdown = ({ title, links, className }: Props) => {
           </Link>
         ))}
       </motion.ul>
-    </motion.div>
+    </div>
   );
 };
 
