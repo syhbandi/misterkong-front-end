@@ -25,7 +25,7 @@ const img = {
 
 const item = {
   off: {
-    y: 200,
+    y: 50,
     opacity: 0,
   },
   on: (i: number) => ({
@@ -54,8 +54,8 @@ const Layanan = () => {
                 initial="off"
                 whileInView="on"
                 viewport={{ once: true }}
-                className="flex items-center gap-5 py-5"
                 key={l.id}
+                className="flex items-center gap-5 py-5"
               >
                 <motion.img
                   variants={img}
