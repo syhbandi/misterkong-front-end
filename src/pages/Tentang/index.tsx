@@ -1,4 +1,20 @@
+import { motion } from "framer-motion";
 import kongFamily from "../../assets/kong-family.jpg";
+
+const header = {
+  off: {
+    y: -50,
+    opacity: 0,
+  },
+  on: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const Tentang = () => {
   return (
     <>
@@ -6,11 +22,16 @@ const Tentang = () => {
         className="h-[500px] bg-cover"
         style={{ backgroundImage: `url(${kongFamily})` }}
       >
-        <div className="backdrop-brightness-50 w-full h-full">
+        <div className="bg-black bg-opacity-75 w-full h-full">
           <div className="container mx-auto max-w-7xl px-6 flex items-center justify-center h-full">
-            <h1 className="text-3xl md:text-5xl font-semibold text-kong font-poppins">
+            <motion.h1
+              variants={header}
+              initial="off"
+              whileInView={"on"}
+              className="text-3xl md:text-5xl font-semibold text-white font-poppins"
+            >
               Sebuah Perjalanan Panjang
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </header>
