@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
+import Tentang from "../pages/Tentang";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "tentang-kami",
+        element: <Tentang />,
       },
     ],
   },
