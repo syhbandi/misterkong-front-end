@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Tentang from "../pages/Tentang";
 import Layanan from "../pages/Layanan";
+import MitraUsaha from "../pages/MitraUsaha";
+import MitraDriver from "../pages/MitraDriver";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "layanan",
         element: <Layanan />,
+      },
+      {
+        path: "mitra-usaha",
+        element: <MitraUsaha />,
+      },
+      {
+        path: "mitra-driver",
+        element: <MitraDriver />,
       },
     ],
   },
