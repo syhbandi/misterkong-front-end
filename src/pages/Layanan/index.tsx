@@ -1,6 +1,22 @@
 import hero from "../../assets/hero-layanan.jpg";
 import { layanan } from "../../data";
 import KategoriDetail from "./KategoriDetail";
+import { motion } from "framer-motion";
+
+const header = {
+  off: {
+    y: -50,
+    opacity: 0,
+  },
+  on: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const Layanan = () => {
   const kategoris = [...new Set(layanan.map((l) => l.kategori))];
   return (
@@ -13,9 +29,14 @@ const Layanan = () => {
           <div className="container mx-auto max-w-7xl px-6 h-full">
             <div className="grid grid-cols-1 md:grid-cols-3 h-full">
               <div className="flex items-center">
-                <h1 className="text-2xl md:text-5xl font-poppins font-bold text-white">
+                <motion.h1
+                  variants={header}
+                  initial="off"
+                  whileInView="on"
+                  className="text-2xl md:text-5xl font-poppins font-bold text-white"
+                >
                   Kami membuat layanan untuk memudahkan harimu
-                </h1>
+                </motion.h1>
               </div>
             </div>
           </div>
