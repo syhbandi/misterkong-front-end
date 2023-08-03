@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Tentang from "../pages/Tentang";
+import Layanan from "../pages/Layanan";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "tentang-kami",
         element: <Tentang />,
+      },
+      {
+        path: "layanan",
+        element: <Layanan />,
       },
     ],
   },
