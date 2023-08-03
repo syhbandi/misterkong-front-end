@@ -30,7 +30,7 @@ type Layanan = {
 };
 const LayananDetail = ({ layanan }: { layanan: Layanan }) => {
   return (
-    <div className="flex items-center gap-3 py-5">
+    <div className="flex items-center gap-5 py-5">
       <motion.img
         variants={img}
         whileHover="hover"
