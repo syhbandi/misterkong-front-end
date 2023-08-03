@@ -118,13 +118,17 @@ const MitraDriver = () => {
                     variants={item}
                     initial="off"
                     whileInView={"on"}
-                    href=""
+                    href="https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.kong.market"
+                    target="_blank"
                     rel="noreferrer"
                     viewport={{ once: true }}
                   >
-                    <span className="px-6 py-3 bg-kong font-roboto text-lg md:text-2xl rounded-md font-semibold">
+                    <motion.span
+                      whileHover={{ scale: 1.1 }}
+                      className="inline-flex items-center justify-center bg-kong rounded-md text-xl font-poppins font-semibold px-7 py-3"
+                    >
                       Daftar sekarang
-                    </span>
+                    </motion.span>
                   </motion.a>
                 </div>
               </div>
@@ -262,6 +266,29 @@ const MitraDriver = () => {
           </div>
         </div>
       </motion.section>
+      <section className="bg-cover" style={{ backgroundImage: `url(${hero})` }}>
+        <div className="h-full w-full backdrop-brightness-50 backdrop-blur-lg">
+          <div className="container mx-auto max-w-7xl px-6 py-10 md:py-20">
+            <h1 className="text-2xl md:text-5xl font-poppins text-white font-semibold text-center mb-10">
+              Sudah siap bergabung?
+            </h1>
+            <div className="flex items-center justify-center">
+              <a
+                href="https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.kong.market"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <motion.span
+                  whileHover={{ scale: 1.1 }}
+                  className="flex items-center justify-center bg-kong rounded-md text-xl font-poppins font-semibold px-7 py-3"
+                >
+                  Daftar sekarang
+                </motion.span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
