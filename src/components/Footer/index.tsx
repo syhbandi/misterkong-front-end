@@ -20,7 +20,7 @@ const socialLink = [
 
 const Footer = () => {
   return (
-    <footer className="py-10 bg-kong bg-opacity-10 font-poppins">
+    <footer className="py-10 bg-gray-100 font-poppins ">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 pb-5 border-b border-gray-400">
           <div className="flex flex-col gap-3">
