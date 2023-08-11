@@ -27,7 +27,7 @@ const childVariants = {
 
 const Hero = () => {
   return (
-    <header className="w-full h-screen">
+    <header className="w-full h-screen" id="head">
       <div className="w-full h-full bg-black bg-opacity-75">
         <div className="grid grid-cols-1 md:grid-cols-2 container max-w-7xl mx-auto px-6 h-full">
           <motion.div
