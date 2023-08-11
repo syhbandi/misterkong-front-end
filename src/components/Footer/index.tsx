@@ -20,7 +20,7 @@ const socialLink = [
 
 const Footer = () => {
   return (
-    <footer className="py-10 bg-gray-100 font-poppins ">
+    <footer className="py-10 bg-gray-100 font-poppins relative">
       <div className="container mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 pb-5 border-b border-gray-400">
           <div className="flex flex-col gap-3">
@@ -28,8 +28,8 @@ const Footer = () => {
             <Link to={"tentang-kami"}>
               <span className="">Tentang kami</span>
             </Link>
-            <Link to={"produk"}>
-              <span className="">Produk</span>
+            <Link to={"layanan"}>
+              <span className="">Layanan</span>
             </Link>
           </div>
           <div className="flex flex-col gap-3">
@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="text-center mt-3">
+        <div className="text-center pt-3">
           &copy;{new Date().getFullYear()}{" "}
           <Link to={"/"} className="font-medium">
             Misterkong.com

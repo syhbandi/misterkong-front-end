@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LgNav from "./LgNav";
 import MobileNav from "./MobileNav";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { FaArrowUp } from "react-icons/fa";
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
@@ -37,6 +39,15 @@ const Navbar = () => {
 
         <MobileNav />
       </div>
+
+      <AnchorLink
+        href="#head"
+        className={`fixed right-0 bottom-0 rounded-md bg-kong shadow-lg p-3 mr-6 mb-6 ${
+          !isScroll ? "hidden" : ""
+        }`}
+      >
+        <FaArrowUp />
+      </AnchorLink>
     </nav>
   );
 };
