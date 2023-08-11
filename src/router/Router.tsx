@@ -6,6 +6,7 @@ import Tentang from "../pages/Tentang";
 import Layanan from "../pages/Layanan";
 import MitraUsaha from "../pages/MitraUsaha";
 import MitraDriver from "../pages/MitraDriver";
+import KebijakanPrivasi from "../pages/KebijakanPrivasi";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "mitra-driver",
         element: <MitraDriver />,
+      },
+      {
+        path: "kebijakan-privasi",
+        element: <KebijakanPrivasi />,
       },
     ],
   },
