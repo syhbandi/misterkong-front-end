@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import "../KebijakanPrivasi/style.css";
 import misterkong from "./Misterkong";
 import { useState } from "react";
 import { layanan } from "../../data";
 
 const SyaratKetentuan = () => {
-  const { slug } = useParams();
+  // const { slug } = useParams();
   const [showMore, setShowMore] = useState(false);
 
   return (
