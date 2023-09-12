@@ -7,6 +7,7 @@ import Layanan from "../pages/Layanan";
 import MitraUsaha from "../pages/MitraUsaha";
 import MitraDriver from "../pages/MitraDriver";
 import KebijakanPrivasi from "../pages/KebijakanPrivasi";
+import SyaratKetentuan from "../pages/SyaratKetentuan";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "kebijakan-privasi",
         element: <KebijakanPrivasi />,
+      },
+      {
+        path: "syarat-ketentuan",
+        element: <SyaratKetentuan />,
       },
     ],
   },
