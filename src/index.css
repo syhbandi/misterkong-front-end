@@ -7,6 +7,10 @@ nav a.active {
   @apply bg-kong rounded-md text-black;
 }
 
+#sidebar a.active {
+  @apply bg-kong text-black;
+}
+
 body {
   @apply bg-gray-50;
 }

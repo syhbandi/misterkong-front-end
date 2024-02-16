@@ -8,6 +8,12 @@ import MitraUsaha from "../pages/MitraUsaha";
 import MitraDriver from "../pages/MitraDriver";
 import KebijakanPrivasi from "../pages/KebijakanPrivasi";
 import SyaratKetentuan from "../pages/SyaratKetentuan";
+import Admin from "../pages/admin";
+import Dashboard from "../pages/admin/dashboard";
+import Blog from "../pages/admin/blog";
+import Login from "../pages/auth/Login";
+import Tambah from "../pages/admin/blog/Tambah";
+import Logout from "../pages/auth/Logout";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +49,38 @@ const router = createBrowserRouter([
         path: "syarat-ketentuan",
         element: <SyaratKetentuan />,
       },
+      {
+        path: "bantuan",
+        element: "tes",
+      },
     ],
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "blog/tambah",
+        element: <Tambah />,
+      },
+    ],
+  },
+  {
+    path: "/admin/login",
+    element: <Login />,
+  },
+  {
+    path: "/admin/logout",
+    element: <Logout />,
   },
 ]);
 

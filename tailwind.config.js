@@ -23,6 +23,11 @@ export default {
           from: { opacity: 1 },
           to: { opacity: 0 },
         },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
       },
       animation: {
         "menu-open": "menuOpen 300ms ease-in-out",
