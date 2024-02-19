@@ -1,34 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
+import { useStore } from "zustand";
 import BreadCrumb from "../../../components/admin/BreadCrumb";
+import useUserStore from "../../../states/auth";
+import { useState } from "react";
 import { GetArtikelsType, getArtikels } from "../../../api/artikel";
+import { useQuery } from "@tanstack/react-query";
+import SearchInput from "../../../components/admin/SearchInput";
+import { Link } from "react-router-dom";
 import Table from "../../../components/admin/Table";
 import artikelCol from "../../../constants/table-columns/artikel";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useStore } from "zustand";
-import useUserStore from "../../../states/auth";
-import SearchInput from "../../../components/admin/SearchInput";
 import Pagination from "../../../components/admin/Pagination";
-import { FiPlus } from "react-icons/fi";
 
-const index = () => {
+const Page = () => {
   const { user } = useStore(useUserStore);
   const [params, setParams] = useState<GetArtikelsType>({
     search: "",
     limit: 0,
     length: 10,
-    kategori: "blog",
+    kategori: "panduan",
   });
   const { data, isLoading } = useQuery({
     queryKey: ["artikel", params],
     queryFn: () => getArtikels(params, user),
   });
-
   return (
     <>
       <BreadCrumb
-        title="Blog"
-        breadcrumb={[{ title: "Blog", href: "/admin/blog", active: true }]}
+        title="Bantuan"
+        breadcrumb={[
+          { title: "Bantuan", href: "/admin/bantuan", active: true },
+        ]}
       />
       <div className="bg-white rounded-lg p-5">
         <div className="flex items-center gap-3 mb-3">
@@ -36,8 +36,7 @@ const index = () => {
             setState={(search) => setParams((prev) => ({ ...prev, search }))}
           />
           <Link to={"tambah"} className="relative">
-            <button className="h-11 flex items-center justify-center px-5 bg-kong rounded-md font-medium hover:bg-opacity-80 gap-2">
-              <FiPlus />
+            <button className="h-11 flex items-center justify-center px-5 bg-kong rounded-md font-medium hover:bg-opacity-80">
               Tambah
             </button>
           </Link>
@@ -80,4 +79,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Page;

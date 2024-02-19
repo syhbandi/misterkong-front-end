@@ -1,28 +1,22 @@
-import { useState } from "react";
-import BreadCrumb from "../../../components/admin/BreadCrumb";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { FormProvider, useForm } from "react-hook-form";
-import Input from "../../../components/admin/Input";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { uploadPlugin } from "../../../components/admin/CKEditorUpload";
-import { object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import SelectSubKategori from "../../../components/admin/SelectSubKategori";
-import UploadGambar from "../../../components/admin/UploadGambar";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createArtikel, getSlug } from "../../../api/artikel";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { editArtikel, getArtikel, getSlug } from "../../../api/artikel";
 import { useStore } from "zustand";
 import useUserStore from "../../../states/auth";
+import BreadCrumb from "../../../components/admin/BreadCrumb";
+import { object, string } from "yup";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
+import UploadGambar from "../../../components/admin/UploadGambar";
+import Input from "../../../components/admin/Input";
+import SelectSubKategori from "../../../components/admin/SelectSubKategori";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { uploadPlugin } from "../../../components/admin/CKEditorUpload";
+import { toast } from "react-toastify";
 import Spinner from "../../../components/Spinner";
-import {
-  FiArrowLeft,
-  FiLoader,
-  FiPenTool,
-  FiPlus,
-  FiSave,
-} from "react-icons/fi";
+import { FiArrowLeft, FiLoader, FiPlus, FiSave } from "react-icons/fi";
 
 const schema = object().shape({
   judul: string().required("Judul harus diisi"),
@@ -30,21 +24,28 @@ const schema = object().shape({
   slug: string().required("Slug harus diisi"),
 });
 
-const Tambah = () => {
+const Edit = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const { user } = useStore(useUserStore);
-  const [blog, setBlog] = useState("");
+  const [content, setContent] = useState("");
+
   const method = useForm({ resolver: yupResolver(schema) });
   const [gambar, setGambar] = useState({
     filename: "",
     path: "",
   });
-  const navigate = useNavigate();
+
+  const query = useQuery({
+    queryKey: ["article", id],
+    queryFn: () => getArtikel(id!, user),
+  });
 
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: createArtikel,
+    mutationFn: editArtikel,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["blog"] });
+      queryClient.invalidateQueries({ queryKey: ["bantuan"] });
       toast.success("Blog baru ditambahkan!");
       navigate("/admin/blog", { replace: true });
     },
@@ -53,9 +54,26 @@ const Tambah = () => {
     },
   });
 
+  useEffect(() => {
+    if (query.data) {
+      method.reset({
+        judul: query.data.data.judul,
+        sub_kategori_id: query.data.data.subkategori_id,
+        slug: query.data.data.slug,
+      });
+      setGambar(() => {
+        const path = query.data.data.header_image;
+        const splitted = path.split("/");
+        const filename = splitted[splitted.length - 1];
+        return { path, filename };
+      });
+      setContent(query.data.data.content);
+    }
+  }, [query.data]);
+
   const handleSubmit = (data: any) => {
     mutation.mutate({
-      body: { ...data, header_image: gambar.path, content: blog },
+      body: { ...data, header_image: gambar.path, content, id },
       user,
     });
   };
@@ -81,15 +99,18 @@ const Tambah = () => {
     }
   };
 
+  if (query.isLoading) return <Spinner />;
+
   return (
     <>
       <BreadCrumb
-        title="Tambah Blog"
+        title="Edit content"
         breadcrumb={[
-          { title: "Blog", href: "/admin/blog", active: false },
-          { title: "Tambah", href: "/admin/blog/tambah", active: true },
+          { title: "content", href: "/admin/content", active: false },
+          { title: "Edit", href: `/admin/content/${id}/edit`, active: true },
         ]}
       />
+      {JSON.stringify(query.data)}
 
       <div className="bg-white rounded-lg p-5 flex-1">
         <UploadGambar gambars={gambar} setGambars={setGambar} />
@@ -117,15 +138,15 @@ const Tambah = () => {
             </div>
             <SelectSubKategori kategoriId="2" />
             <div className="flex flex-col">
-              <label className="font-medium mb-2">Blog</label>
+              <label className="font-medium mb-2">content</label>
               <CKEditor
                 editor={ClassicEditor}
                 config={{
                   extraPlugins: [uploadPlugin],
                 }}
-                data={""}
+                data={content}
                 onChange={(event, editor) => {
-                  setBlog(editor.getData());
+                  setContent(editor.getData());
                 }}
               />
             </div>
@@ -160,4 +181,4 @@ const Tambah = () => {
   );
 };
 
-export default Tambah;
+export default Edit;

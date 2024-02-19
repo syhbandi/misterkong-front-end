@@ -21,7 +21,7 @@ export const getArtikels = async (params: GetArtikelsType, user: userType) => {
 
 export const getArtikel = async (id: string, user: userType) => {
   const { data } = await api.get("article", {
-    params: { id },
+    params: { key: id },
     headers: {
       Authorization: `Bearer ${user.access_token}`,
     },

@@ -33,7 +33,7 @@ const artikelCol = [
 const Aksi = ({ artikel }: { artikel: ArtikelType }) => {
   return (
     <div className="flex items-center gap-2">
-      <Link to={`${artikel.id}/detail`}>
+      <Link to={`${artikel.id}/edit`}>
         <FiEdit />
       </Link>
       <button>

@@ -13,7 +13,11 @@ import Dashboard from "../pages/admin/dashboard";
 import Blog from "../pages/admin/blog";
 import Login from "../pages/auth/Login";
 import Tambah from "../pages/admin/blog/Tambah";
+import EditBlog from "../pages/admin/blog/Edit";
 import Logout from "../pages/auth/Logout";
+import Bantuan from "../pages/admin/bantuan";
+import TambahBantuan from "../pages/admin/bantuan/Tambah";
+import EditBantuan from "../pages/admin/bantuan/Edit";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +76,10 @@ const router = createBrowserRouter([
         path: "blog/tambah",
         element: <Tambah />,
       },
+      { path: "blog/:id/edit", element: <EditBlog /> },
+      { path: "bantuan", element: <Bantuan /> },
+      { path: "bantuan/tambah", element: <TambahBantuan /> },
+      { path: "bantuan/:id/edit", element: <EditBantuan /> },
     ],
   },
   {

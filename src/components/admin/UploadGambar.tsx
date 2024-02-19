@@ -71,7 +71,7 @@ const UploadGambar = ({ setGambars, gambars }: Props) => {
   return (
     <>
       <h1 className="font-medium mb-2">Gambar header</h1>
-      {gambars?.filename ? (
+      {gambars?.path ? (
         <div className="h-[200px] rounded overflow-hidden relative">
           <img
             src={`${gambars?.path}?${new Date()}`}
