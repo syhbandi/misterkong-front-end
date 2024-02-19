@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Table from "../../../components/admin/Table";
 import artikelCol from "../../../constants/table-columns/artikel";
 import Pagination from "../../../components/admin/Pagination";
+import { FiPlus } from "react-icons/fi";
 
 const Page = () => {
   const { user } = useStore(useUserStore);
@@ -36,7 +37,8 @@ const Page = () => {
             setState={(search) => setParams((prev) => ({ ...prev, search }))}
           />
           <Link to={"tambah"} className="relative">
-            <button className="h-11 flex items-center justify-center px-5 bg-kong rounded-md font-medium hover:bg-opacity-80">
+            <button className="h-11 flex items-center justify-center px-5 bg-kong rounded-md font-medium hover:bg-opacity-80 gap-2">
+              <FiPlus />
               Tambah
             </button>
           </Link>

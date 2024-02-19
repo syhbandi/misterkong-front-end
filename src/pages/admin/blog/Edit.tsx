@@ -17,6 +17,7 @@ import { uploadPlugin } from "../../../components/admin/CKEditorUpload";
 import { toast } from "react-toastify";
 import Spinner from "../../../components/Spinner";
 import { FiArrowLeft, FiLoader, FiPlus, FiSave } from "react-icons/fi";
+import { MdErrorOutline } from "react-icons/md";
 
 const schema = object().shape({
   judul: string().required("Judul harus diisi"),
@@ -46,11 +47,11 @@ const Edit = () => {
     mutationFn: editArtikel,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["bantuan"] });
-      toast.success("Blog baru ditambahkan!");
+      toast.success("Blog diperbarui!");
       navigate("/admin/blog", { replace: true });
     },
     onError: () => {
-      toast.error("Gagal menambah blog baru");
+      toast.error("Gagal memperbarui!");
     },
   });
 
@@ -100,6 +101,13 @@ const Edit = () => {
   };
 
   if (query.isLoading) return <Spinner />;
+  if (query.isError)
+    return (
+      <div className="flex items-center border border-red-600 bg-red-100">
+        <MdErrorOutline className="text-lg text-red-600" />
+        Terjadi kesalahan!
+      </div>
+    );
 
   return (
     <>
@@ -110,7 +118,6 @@ const Edit = () => {
           { title: "Edit", href: `/admin/content/${id}/edit`, active: true },
         ]}
       />
-      {JSON.stringify(query.data)}
 
       <div className="bg-white rounded-lg p-5 flex-1">
         <UploadGambar gambars={gambar} setGambars={setGambar} />
