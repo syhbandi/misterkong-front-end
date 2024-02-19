@@ -5,11 +5,7 @@ import transport from "../../assets/kongride-layanan.png";
 
 const KategoriDetail = ({ kategori }: { kategori: string }) => {
   return (
-    <section
-      className={`py-10 ${
-        kategori === "Pesan Makan & Belanjain" ? "bg-red-100" : ""
-      }`}
-    >
+    <section className={`py-10 `}>
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="flex flex-col justify-center">

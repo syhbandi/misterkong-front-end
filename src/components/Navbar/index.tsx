@@ -4,6 +4,7 @@ import LgNav from "./LgNav";
 import MobileNav from "./MobileNav";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { FaArrowUp } from "react-icons/fa";
+import { IoArrowUpOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
@@ -24,6 +25,13 @@ const Navbar = () => {
     };
   }, [window]);
 
+  const handleToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <nav
       className={`top-0 left-0 fixed w-full transition-all duration-300 z-20 font-poppins ${
@@ -40,14 +48,14 @@ const Navbar = () => {
         <MobileNav />
       </div>
 
-      <AnchorLink
-        href="#head"
-        className={`fixed right-0 bottom-0 rounded-md bg-kong shadow-lg p-3 mr-6 mb-6 ${
-          !isScroll ? "hidden" : ""
-        }`}
-      >
-        <FaArrowUp />
-      </AnchorLink>
+      {isScroll ? (
+        <button
+          className="fixed bottom-0 right-0 mb-6 mr-6 h-10 w-10 rounded-full bg-kong shadow-lg flex items-center justify-center"
+          onClick={handleToTop}
+        >
+          <IoArrowUpOutline />
+        </button>
+      ) : null}
     </nav>
   );
 };

@@ -30,7 +30,7 @@ const Fitur = () => {
             variants={fitursVariant}
             initial="off"
             whileInView="on"
-            className={`relative ${isOdd ? "bg-kong bg-opacity-20" : ""}`}
+            className={`relative`}
             key={index}
             viewport={{ once: true }}
           >
@@ -58,7 +58,7 @@ const Fitur = () => {
                 />
                 <motion.p
                   variants={fiturVariant}
-                  className="text-base md:text-xl font-roboto leading-6"
+                  className="text-base lg:text-lg font-roboto leading-loose"
                 >
                   {item.body}
                 </motion.p>
