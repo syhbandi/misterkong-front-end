@@ -99,7 +99,7 @@ const Tambah = () => {
                 Buat slug
               </button>
               <button
-                className="h-[41.6px] bg-white border border-gray-500 px-5 rounded mb-5 disabled:opacity-50 hover:bg-gray-800 hover:text-white"
+                className="h-[41.6px] bg-white border border-gray-500 px-5 rounded mb-5 disabled:opacity-50 hover:bg-gray-200"
                 onClick={cekSlug}
                 type="button"
               >
@@ -124,6 +124,7 @@ const Tambah = () => {
               <button
                 className="h-11 rounded-md bg-white border border-gray-400 px-5 hover:bg-gray-100"
                 onClick={() => history.back()}
+                type="button"
               >
                 Batal
               </button>

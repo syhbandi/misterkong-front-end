@@ -1,7 +1,7 @@
 import Sidebar from "../../components/admin/Sidebar";
 import Footer from "../../components/admin/Footer";
 import Navbar from "../../components/admin/Navbar";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, ScrollRestoration } from "react-router-dom";
 import { useStore } from "zustand";
 import useUserStore, { userType } from "../../states/auth";
 import { useQuery } from "@tanstack/react-query";
@@ -47,6 +47,7 @@ const Index = () => {
         <Footer />
       </div>
       <ToastContainer />
+      <ScrollRestoration />
     </>
   );
 };
