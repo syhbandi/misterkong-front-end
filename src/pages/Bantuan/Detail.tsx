@@ -16,6 +16,14 @@ const Detail = () => {
         <Spinner />
       </div>
     );
+  if (isError)
+    return (
+      <div className="flex justify-center items-center py-10">
+        <h1 className="text-lg text-red-500 font-roboto">
+          Terjadi kesalahan saat memuat artikel!
+        </h1>
+      </div>
+    );
   return (
     <section>
       <div className="container mx-auto px-6 py-10 max-w-7xl">
