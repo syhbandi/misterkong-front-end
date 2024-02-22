@@ -4,8 +4,8 @@ import api from "./api.config";
 
 export type GetArtikelsType = {
   search: string;
-  limit: number;
-  length: number;
+  limit: number | any;
+  length: number | any;
   kategori?: string;
 };
 
@@ -109,5 +109,22 @@ export const getSlug = async (slug: string, user: userType) => {
       Authorization: `Bearer ${user.access_token}`,
     },
   });
+  return data;
+};
+
+// ---------------------------------------front office ---------------------------------------------------
+export const getFrontArticles = async (
+  params: GetArtikelsType,
+  kategori: string,
+  subId: string
+) => {
+  const { data } = await api.get(`article/${kategori}/${subId}`, {
+    params,
+  });
+  return data;
+};
+
+export const getFrontArticle = async (slug: string) => {
+  const { data } = await api.get(`article/dt/${slug}`);
   return data;
 };

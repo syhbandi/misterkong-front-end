@@ -18,6 +18,9 @@ import Logout from "../pages/auth/Logout";
 import Bantuan from "../pages/admin/bantuan";
 import TambahBantuan from "../pages/admin/bantuan/Tambah";
 import EditBantuan from "../pages/admin/bantuan/Edit";
+import BantuanFront from "../pages/Bantuan";
+import SubKategori from "../pages/Bantuan/SubKategori";
+import Detail from "../pages/Bantuan/Detail";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "bantuan",
-        element: "tes",
+        element: <BantuanFront />,
+        children: [
+          { path: ":kategori", element: <SubKategori /> },
+          { path: ":kategori/:slug", element: <Detail /> },
+        ],
       },
     ],
   },

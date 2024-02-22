@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LgNav from "./LgNav";
 import MobileNav from "./MobileNav";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import { FaArrowUp } from "react-icons/fa";
 import { IoArrowUpOutline } from "react-icons/io5";
 
 const Navbar = () => {

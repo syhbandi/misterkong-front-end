@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 nav a.active {
-  @apply bg-kong rounded-md text-black;
+  @apply text-kong;
 }
 
 #sidebar a.active {
