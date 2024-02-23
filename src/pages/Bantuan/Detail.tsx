@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { getFrontArticle } from "../../api/artikel";
 import "./style.css";
 import Spinner from "../../components/Spinner";
 
 const Detail = () => {
   const { slug } = useParams();
+  const { state } = useLocation();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["aricle", slug],
     queryFn: () => getFrontArticle(slug!),
@@ -27,6 +28,20 @@ const Detail = () => {
   return (
     <section>
       <div className="container mx-auto px-6 py-10 max-w-7xl">
+        <div className="capitalize inline-flex items-center font-roboto gap-2">
+          <Link to={"/bantuan"} className="font-semibold">
+            Bantuan
+          </Link>{" "}
+          /
+          <Link
+            to={`/bantuan/${state.nama.toLowerCase().split(" ").join("-")}`}
+            state={state}
+            className="font-semibold"
+          >
+            {state.nama}
+          </Link>
+          /<span>{data?.data?.judul}</span>
+        </div>
         <div className="w-full lg:w-2/3 mx-auto mt-10">
           <div className="mb-10">
             <h1 className="text-3xl md:text-4xl font-poppins font-semibold text-center capitalize mb-3">

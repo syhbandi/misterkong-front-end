@@ -34,7 +34,7 @@ const SubKategori = () => {
           Pilih Topik
         </h1>
         {query.data?.data?.map((item: any, index: number) => (
-          <Link to={item.slug} key={"sub-" + index}>
+          <Link to={item.slug} key={"sub-" + index} state={state}>
             <div className="py-5 border-b border-gray-200 font-medium capitalize font-roboto hover:underline">
               {item.judul}
             </div>

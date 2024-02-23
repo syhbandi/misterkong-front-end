@@ -1,6 +1,11 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createColumnHelper } from "@tanstack/react-table";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { deleteArtikel } from "../../api/artikel";
+import { toast } from "react-toastify";
+import { useStore } from "zustand";
+import useUserStore from "../../states/auth";
 
 export type ArtikelType = {
   content: string;
@@ -31,12 +36,33 @@ const artikelCol = [
 ];
 
 const Aksi = ({ artikel }: { artikel: ArtikelType }) => {
+  const { user } = useStore(useUserStore);
+  const queryClient = useQueryClient();
+  const deleteMutation = useMutation({
+    mutationFn: deleteArtikel,
+    onMutate: () => {
+      return { id: artikel.id };
+    },
+    onSuccess: (data, variables, context) => {
+      queryClient.invalidateQueries({ queryKey: ["artikel"] });
+      toast.success(`Artikel dengan ID: ${context?.id} berhasil dihapus!`);
+    },
+    onError: () => {
+      deleteMutation.reset();
+      toast.error("Gagal menghapus artikel!");
+    },
+  });
+  const handleDelete = () => {
+    if (window.confirm("Artikel akan dihapus")) {
+      deleteMutation.mutate({ id: artikel.id, user });
+    }
+  };
   return (
     <div className="flex items-center gap-2">
       <Link to={`${artikel.id}/edit`}>
         <FiEdit />
       </Link>
-      <button>
+      <button onClick={handleDelete}>
         <FiTrash className={"text-red-600"} />
       </button>
     </div>

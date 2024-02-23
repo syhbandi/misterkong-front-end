@@ -112,6 +112,22 @@ export const getSlug = async (slug: string, user: userType) => {
   return data;
 };
 
+export const deleteArtikel = async ({
+  id,
+  user,
+}: {
+  id: string | number;
+  user: userType;
+}) => {
+  const { data } = await api.delete("article", {
+    params: { key: id },
+    headers: {
+      Authorization: "Bearer " + user.access_token,
+    },
+  });
+  return data;
+};
+
 // ---------------------------------------front office ---------------------------------------------------
 export const getFrontArticles = async (
   params: GetArtikelsType,

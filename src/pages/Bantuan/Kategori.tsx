@@ -30,7 +30,7 @@ const Kategori = () => {
             <Link
               to={item.nama.toLowerCase().split(" ").join("-")}
               key={index}
-              state={{ id: item.id }}
+              state={{ id: item.id, nama: item.nama.toLowerCase() }}
             >
               <div className="cursor-pointer px-5 py-5 shadow rounded-lg flex items-center gap-5 hover:bg-gray-100 font-roboto font-semibold">
                 <span className="text-lg capitalize">
