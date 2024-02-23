@@ -152,6 +152,7 @@ const Edit = () => {
                   extraPlugins: [uploadPlugin],
                 }}
                 data={content}
+                //@ts-ignore
                 onChange={(event, editor) => {
                   setContent(editor.getData());
                 }}

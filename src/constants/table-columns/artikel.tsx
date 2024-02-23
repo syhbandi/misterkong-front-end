@@ -43,6 +43,7 @@ const Aksi = ({ artikel }: { artikel: ArtikelType }) => {
     onMutate: () => {
       return { id: artikel.id };
     },
+    //@ts-ignore
     onSuccess: (data, variables, context) => {
       queryClient.invalidateQueries({ queryKey: ["artikel"] });
       toast.success(`Artikel dengan ID: ${context?.id} berhasil dihapus!`);

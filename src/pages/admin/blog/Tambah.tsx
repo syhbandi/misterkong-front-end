@@ -16,13 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useStore } from "zustand";
 import useUserStore from "../../../states/auth";
 import Spinner from "../../../components/Spinner";
-import {
-  FiArrowLeft,
-  FiLoader,
-  FiPenTool,
-  FiPlus,
-  FiSave,
-} from "react-icons/fi";
+import { FiArrowLeft, FiLoader, FiPlus, FiSave } from "react-icons/fi";
 
 const schema = object().shape({
   judul: string().required("Judul harus diisi"),
@@ -123,7 +117,8 @@ const Tambah = () => {
                 config={{
                   extraPlugins: [uploadPlugin],
                 }}
-                data={""}
+                data={blog}
+                //@ts-ignore
                 onChange={(event, editor) => {
                   setBlog(editor.getData());
                 }}
