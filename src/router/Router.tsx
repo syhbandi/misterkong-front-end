@@ -21,6 +21,12 @@ import EditBantuan from "../pages/admin/bantuan/Edit";
 import BantuanFront from "../pages/Bantuan";
 import SubKategori from "../pages/Bantuan/SubKategori";
 import Detail from "../pages/Bantuan/Detail";
+import AdminSyaratKetentuan from "../pages/admin/syarat-ketentuan";
+import TambahSyaratKetentuan from "../pages/admin/syarat-ketentuan/Tambah";
+import EditSyaratKetentuan from "../pages/admin/syarat-ketentuan/Edit";
+import AdminKebijakanPrivasi from "../pages/admin/kebijakan-privasi";
+import TambahKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Tambah";
+import EditKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Edit";
 
 const router = createBrowserRouter([
   {
@@ -28,34 +34,13 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "tentang-kami",
-        element: <Tentang />,
-      },
-      {
-        path: "layanan",
-        element: <Layanan />,
-      },
-      {
-        path: "mitra-usaha",
-        element: <MitraUsaha />,
-      },
-      {
-        path: "mitra-driver",
-        element: <MitraDriver />,
-      },
-      {
-        path: "kebijakan-privasi",
-        element: <KebijakanPrivasi />,
-      },
-      {
-        path: "syarat-ketentuan",
-        element: <SyaratKetentuan />,
-      },
+      { index: true, element: <Home /> },
+      { path: "tentang-kami", element: <Tentang /> },
+      { path: "layanan", element: <Layanan /> },
+      { path: "mitra-usaha", element: <MitraUsaha /> },
+      { path: "mitra-driver", element: <MitraDriver /> },
+      { path: "kebijakan-privasi", element: <KebijakanPrivasi /> },
+      { path: "syarat-ketentuan", element: <SyaratKetentuan /> },
       {
         path: "bantuan",
         element: <BantuanFront />,
@@ -71,32 +56,23 @@ const router = createBrowserRouter([
     element: <Admin />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Dashboard />,
-      },
-      {
-        path: "blog",
-        element: <Blog />,
-      },
-      {
-        path: "blog/tambah",
-        element: <Tambah />,
-      },
+      { index: true, element: <Dashboard /> },
+      { path: "blog", element: <Blog /> },
+      { path: "blog/tambah", element: <Tambah /> },
       { path: "blog/:id/edit", element: <EditBlog /> },
       { path: "bantuan", element: <Bantuan /> },
       { path: "bantuan/tambah", element: <TambahBantuan /> },
       { path: "bantuan/:id/edit", element: <EditBantuan /> },
+      { path: "kebijakan-privasi", element: <AdminKebijakanPrivasi /> },
+      { path: "kebijakan-privasi/tambah", element: <TambahKebijakanPrivasi /> },
+      { path: "kebijakan-privasi/:id/edit", element: <EditKebijakanPrivasi /> },
+      { path: "syarat-ketentuan", element: <AdminSyaratKetentuan /> },
+      { path: "syarat-ketentuan/tambah", element: <TambahSyaratKetentuan /> },
+      { path: "syarat-ketentuan/:id/edit", element: <EditSyaratKetentuan /> },
     ],
   },
-  {
-    path: "/admin/login",
-    element: <Login />,
-  },
-  {
-    path: "/admin/logout",
-    element: <Logout />,
-  },
+  { path: "/admin/login", element: <Login /> },
+  { path: "/admin/logout", element: <Logout /> },
 ]);
 
 export default router;

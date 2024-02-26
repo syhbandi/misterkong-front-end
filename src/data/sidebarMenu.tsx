@@ -32,11 +32,11 @@ export const menus: MenusType[] = [
   {
     title: "Syarat & Ketentuan",
     icon: <LuFileSignature />,
-    href: "/admin/sk",
+    href: "/admin/syarat-ketentuan",
   },
   {
     title: "Kebijakan Privasi",
     icon: <LuFileSignature />,
-    href: "/admin/kp",
+    href: "/admin/kebijakan-privasi",
   },
 ];

@@ -132,7 +132,7 @@ export const deleteArtikel = async ({
 export const getFrontArticles = async (
   params: GetArtikelsType,
   kategori: string,
-  subId: string
+  subId?: string
 ) => {
   const { data } = await api.get(`article/${kategori}/${subId}`, {
     params,
