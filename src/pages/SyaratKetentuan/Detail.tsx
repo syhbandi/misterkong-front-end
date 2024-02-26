@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { getFrontArticle } from "../../api/artikel";
-import "./style.css";
 import Spinner from "../../components/Spinner";
 
 const Detail = () => {
@@ -29,12 +28,15 @@ const Detail = () => {
     <section>
       <div className="container mx-auto px-6 py-10 max-w-7xl">
         <div className="capitalize inline-flex items-center font-roboto gap-2">
-          <Link to={"/bantuan"} className="font-semibold">
-            Bantuan
+          <Link to={"/syarat-ketentuan"} className="font-semibold">
+            Syarat & Ketentuan
           </Link>{" "}
           /
           <Link
-            to={`/bantuan/${state.nama.toLowerCase().split(" ").join("-")}`}
+            to={`/syarat-ketentuan/${state.nama
+              .toLowerCase()
+              .split(" ")
+              .join("-")}`}
             state={state}
             className="font-semibold"
           >

@@ -8,6 +8,8 @@ import MitraUsaha from "../pages/MitraUsaha";
 import MitraDriver from "../pages/MitraDriver";
 import KebijakanPrivasi from "../pages/KebijakanPrivasi";
 import SyaratKetentuan from "../pages/SyaratKetentuan";
+import SubKategoriSk from "../pages/SyaratKetentuan/SubKategori";
+import DetailSk from "../pages/SyaratKetentuan/Detail";
 import Admin from "../pages/admin";
 import Dashboard from "../pages/admin/dashboard";
 import Blog from "../pages/admin/blog";
@@ -40,7 +42,14 @@ const router = createBrowserRouter([
       { path: "mitra-usaha", element: <MitraUsaha /> },
       { path: "mitra-driver", element: <MitraDriver /> },
       { path: "kebijakan-privasi", element: <KebijakanPrivasi /> },
-      { path: "syarat-ketentuan", element: <SyaratKetentuan /> },
+      {
+        path: "syarat-ketentuan",
+        element: <SyaratKetentuan />,
+        children: [
+          { path: ":kategori", element: <SubKategoriSk /> },
+          { path: ":kategori/:slug", element: <DetailSk /> },
+        ],
+      },
       {
         path: "bantuan",
         element: <BantuanFront />,

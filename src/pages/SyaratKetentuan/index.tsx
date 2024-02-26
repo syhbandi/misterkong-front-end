@@ -1,52 +1,20 @@
-// import { useParams } from "react-router-dom";
-import "../KebijakanPrivasi/style.css";
-import misterkong from "./Misterkong";
-import { useState } from "react";
-import { layanan } from "../../data";
+import Kategori from "./Kategori";
+import { Outlet } from "react-router-dom";
 
-const SyaratKetentuan = () => {
-  // const { slug } = useParams();
-  const [showMore, setShowMore] = useState(false);
-
+const Page = () => {
   return (
     <>
-      <header className="h-[500px] bg-indigo-900" id="head">
-        <div className="container h-full mx-auto max-w-7xl px-6 flex items-center justify-center">
-          <h1 className="md:text-5xl text-2xl font-semibold font-poppins text-white">
-            Syarat & Ketentuan
+      <header className={`h-[300px] bg-cover bg-no-repeat bg-blue-600`}>
+        <div className="h-full w-full backdrop-brightness-[20%] flex items-center justify-center">
+          <h1 className="text-3xl md:text-5xl font-poppins font-bold text-white">
+            Syarat dan Ketentuan
           </h1>
         </div>
       </header>
-      <section className="py-10">
-        <div className="container mx-auto max-w-7xl px-6 ck-content">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: showMore ? misterkong : misterkong.slice(0, 3000) + "...",
-            }}
-            className="ck-content font-roboto break-words"
-          />
-          <div className="flex justify-center">
-            <button
-              className="bg-kong rounded-md px-7 py-3 font-poppins font-medium"
-              onClick={() => setShowMore(!showMore)}
-            >
-              {showMore ? "Lebih Sedikit" : "Lebih Banyak"}
-            </button>
-          </div>
-          <div className="flex flex-col items-center">
-            {layanan.map((layanan) => (
-              <div
-                key={layanan.id}
-                className="border-b border-gray-300 py-4 md:w-[50%] flex items-center"
-              >
-                <img src={layanan.icon} width={40} height={40} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Outlet />
+      <Kategori />
     </>
   );
 };
 
-export default SyaratKetentuan;
+export default Page;

@@ -81,7 +81,7 @@ const Edit = () => {
 
   const buatSlug = () => {
     if (!method.getValues("judul")) return;
-    let slug = method.getValues("judul").split(" ").join("-");
+    let slug = method.getValues("judul").split(" ").join("-").toLowerCase();
     method.setValue("slug", slug);
   };
 
