@@ -1,7 +1,12 @@
 import Sidebar from "../../components/admin/Sidebar";
 import Footer from "../../components/admin/Footer";
 import Navbar from "../../components/admin/Navbar";
-import { Navigate, Outlet, ScrollRestoration } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  ScrollRestoration,
+  useNavigate,
+} from "react-router-dom";
 import { useStore } from "zustand";
 import useUserStore, { userType } from "../../states/auth";
 import { useQuery } from "@tanstack/react-query";
@@ -11,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 const Index = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useStore(useUserStore);
 
   if (!user.access_token) return <Navigate to={"/admin/login"} />;
@@ -25,12 +31,16 @@ const Index = () => {
   });
 
   useEffect(() => {
+    if (query.isError) {
+      navigate("/admin/logout");
+    }
+
     if (query.data) {
       const data: userType = { ...user, access_token: query.data.access_token };
       localStorage.setItem("MISTERKONG_ADMIN", JSON.stringify(data));
       setUser(data);
     }
-  }, [query.data]);
+  }, [query.data, query.isError]);
 
   useEffect(() => {
     document.title = "Misterkong | Admin";

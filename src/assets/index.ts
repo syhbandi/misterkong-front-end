@@ -7,6 +7,7 @@ import KongMeal from "./KongMeal.svg";
 import KongSend from "./KongSend.svg";
 import KongMart from "./KongMart.svg";
 import KongShop from "./KongShop.svg";
+import default_image from "./no_image_default.png";
 
 export {
   logo,
@@ -18,4 +19,5 @@ export {
   KongCar,
   KongMart,
   KongShop,
+  default_image,
 };

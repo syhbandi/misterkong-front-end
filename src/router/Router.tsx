@@ -29,6 +29,8 @@ import EditSyaratKetentuan from "../pages/admin/syarat-ketentuan/Edit";
 import AdminKebijakanPrivasi from "../pages/admin/kebijakan-privasi";
 import TambahKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Tambah";
 import EditKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Edit";
+import FrontBlog from "../pages/Blog";
+import FrontBlogDetail from "../pages/Blog/Detail";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,8 @@ const router = createBrowserRouter([
           { path: ":kategori/:slug", element: <Detail /> },
         ],
       },
+      { path: "blog", element: <FrontBlog /> },
+      { path: "blog/:slug", element: <FrontBlogDetail /> },
     ],
   },
   {

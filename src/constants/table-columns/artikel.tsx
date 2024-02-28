@@ -23,7 +23,13 @@ export type ArtikelType = {
 const helper = createColumnHelper<ArtikelType>();
 const artikelCol = [
   helper.accessor("id", { cell: (data) => data.getValue() }),
-  helper.accessor("judul", { cell: (data) => data.getValue() }),
+  helper.accessor("judul", {
+    cell: (data) => (
+      <p className="text-ellipsis line-clamp-1 overflow-hidden">
+        {data.getValue()}
+      </p>
+    ),
+  }),
   helper.accessor("sub_kategori", {
     header: "sub kategori",
     cell: (data) => data.getValue(),
