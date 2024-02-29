@@ -44,10 +44,10 @@ const Detail = () => {
         </div>
         <div className="w-full lg:w-2/3 mx-auto mt-10">
           <div className="mb-10">
-            <h1 className="text-3xl md:text-4xl font-poppins font-semibold text-center capitalize mb-3">
+            <h1 className="text-3xl md:text-4xl md:leading-snug font-poppins font-semibold capitalize mb-3">
               {data?.data.judul}
             </h1>
-            <p className="text-center text-gray-400 font-roboto">
+            <p className=" text-gray-400 font-roboto">
               {new Intl.DateTimeFormat("id", { dateStyle: "long" }).format(
                 new Date(data?.data.date_add)
               )}{" "}

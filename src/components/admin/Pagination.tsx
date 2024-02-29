@@ -15,6 +15,7 @@ const Pagination = ({ dataCount, setOffset, dataPerPage, offset }: Props) => {
   const onPageChange = (e: any) => {
     setOffset((e?.selected * dataPerPage) % dataCount);
     setPage(e?.selected);
+    console.log(offset);
   };
 
   useEffect(() => {

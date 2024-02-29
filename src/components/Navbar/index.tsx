@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LgNav from "./LgNav";
 import MobileNav from "./MobileNav";
 import { IoArrowUpOutline } from "react-icons/io5";
 
+const pengecualian = ["blog-detail"];
+
 const Navbar = () => {
   const [isScroll, setIsScroll] = useState(false);
+  const { state } = useLocation();
 
   useEffect(() => {
     const scrollFunc = () => {
@@ -33,7 +36,9 @@ const Navbar = () => {
   return (
     <nav
       className={`top-0 left-0 fixed w-full transition-all duration-300 z-20 font-poppins ${
-        isScroll ? "bg-white text-black shadow-md" : "text-white py-3"
+        pengecualian.find((p) => p === state?.page) || isScroll
+          ? "bg-white text-black shadow-md"
+          : "text-white py-3"
       }`}
     >
       <div className="flex items-center container mx-auto py-4 px-6 max-w-7xl">

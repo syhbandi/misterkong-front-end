@@ -2,24 +2,29 @@ import { useQuery } from "@tanstack/react-query";
 import { FiSearch } from "react-icons/fi";
 import api from "../../api/api.config";
 import { Link, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 import { default_image } from "../../assets";
+import Pagination from "../../components/admin/Pagination";
 
 const Page = () => {
   const [search, setSearch] = useSearchParams();
-  const [offset, setOffset] = useState(0);
+  const [params, setParams] = useState({
+    search: search.get("cari") || "",
+    limit: 0,
+    length: 15,
+  });
   const query = useQuery({
-    queryKey: ["blog", offset, search.get("cari")],
+    queryKey: ["blog", params],
     queryFn: async () =>
       await api.get("article/all/blog", {
-        params: {
-          search: search.get("cari"),
-          limit: offset,
-          length: "10",
-        },
+        params,
       }),
   });
+
+  useEffect(() => {
+    setParams((prev) => ({ ...prev, search: search.get("cari")! }));
+  }, [search]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,6 +51,7 @@ const Page = () => {
                   name="cari-blog"
                   className="outline-none h-full bg-transparent px-3 font-roboto flex-1"
                   placeholder="Cari di blog"
+                  defaultValue={search.get("cari")!}
                 />
                 <button className="h-full bg-kong outline-none flex items-center justify-center px-5 text-xl hover:brightness-90">
                   <FiSearch />
@@ -56,26 +62,43 @@ const Page = () => {
         </div>
       </header>
       <div className="container mx-auto px-6 max-w-7xl py-10">
-        {query.isLoading && (
+        {query.isLoading ? (
           <div className="flex items-center justify-center">
             <Spinner />
           </div>
-        )}
-        {query.isError && (
+        ) : query.isError ? (
           <div className="flex items-center justify-center font-semibold text-red-500 text-lg">
             Terjadi kesalahan saat memuat data
           </div>
-        )}
-        {!query.data?.data.data.length && (
+        ) : !query.data ? (
           <div className="flex items-center justify-center font-semibold font-roboto">
             Tidak menemukan data{" "}
             {search.get("cari") ? "dengan keyword: " + search.get("cari") : ""}
           </div>
+        ) : (
+          <>
+            {search.has("cari") && (
+              <p className="text-2xl font-roboto font-medium mb-10">
+                Menampilkan hasil pencarian dengan keyword:{" "}
+                <span className="font-semibold">{search.get("cari")}</span>
+              </p>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {query.data?.data.data?.map((blog: any) => (
+                <BlogCard key={blog.id} blog={blog} />
+              ))}
+            </div>
+          </>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {query.data?.data.data?.map((blog: any) => (
-            <BlogCard key={blog.id} blog={blog} />
-          ))}
+        <div className="flex items-center justify-center mt-10">
+          <Pagination
+            dataCount={query.data?.data?.jumlah}
+            dataPerPage={params.length}
+            offset={params.limit}
+            setOffset={(offset) =>
+              setParams((prev) => ({ ...prev, limit: offset }))
+            }
+          />
         </div>
       </div>
     </>
@@ -99,7 +122,7 @@ type PropsType = {
 };
 const BlogCard = ({ blog }: PropsType) => {
   return (
-    <Link to={`/blog/${blog.slug}`}>
+    <Link to={`/blog/${blog.slug}`} state={{ page: "blog-detail" }}>
       <div className="h-[350px] flex flex-col">
         <img
           src={blog.header_image || default_image}
