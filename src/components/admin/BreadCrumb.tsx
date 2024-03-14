@@ -13,8 +13,8 @@ const BreadCrumb = ({
 }) => {
   return (
     <div className="flex items-center justify-between mb-5 text-sm">
-      <h1 className="text-xl font-semibold font-poppins">{title}</h1>
-      <div className="font-poppins">
+      <h1 className="text-2xl font-semibold">{title}</h1>
+      <div>
         <NavLink to={"/admin"} className={"text-gray-400"}>
           Home /{" "}
         </NavLink>
