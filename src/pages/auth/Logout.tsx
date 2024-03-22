@@ -9,7 +9,7 @@ const Logout = () => {
   useEffect(() => {
     setUser({});
     localStorage.removeItem("MISTERKONG_ADMIN");
-  });
+  }, []);
 
   return <Navigate to={"/admin/login"} />;
 };

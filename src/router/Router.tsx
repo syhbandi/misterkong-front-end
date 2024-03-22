@@ -1,36 +1,56 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Home from "../pages/Home";
+import { Suspense, lazy } from "react";
 import ErrorPage from "../pages/ErrorPage";
-import Tentang from "../pages/Tentang";
-import Layanan from "../pages/Layanan";
-import MitraUsaha from "../pages/MitraUsaha";
-import MitraDriver from "../pages/MitraDriver";
-import KebijakanPrivasi from "../pages/KebijakanPrivasi";
-import SyaratKetentuan from "../pages/SyaratKetentuan";
-import SubKategoriSk from "../pages/SyaratKetentuan/SubKategori";
-import DetailSk from "../pages/SyaratKetentuan/Detail";
-import Admin from "../pages/admin";
-import Dashboard from "../pages/admin/dashboard";
-import Blog from "../pages/admin/blog";
-import Login from "../pages/auth/Login";
-import Tambah from "../pages/admin/blog/Tambah";
-import EditBlog from "../pages/admin/blog/Edit";
-import Logout from "../pages/auth/Logout";
-import Bantuan from "../pages/admin/bantuan";
-import TambahBantuan from "../pages/admin/bantuan/Tambah";
-import EditBantuan from "../pages/admin/bantuan/Edit";
-import BantuanFront from "../pages/Bantuan";
-import SubKategori from "../pages/Bantuan/SubKategori";
-import Detail from "../pages/Bantuan/Detail";
-import AdminSyaratKetentuan from "../pages/admin/syarat-ketentuan";
-import TambahSyaratKetentuan from "../pages/admin/syarat-ketentuan/Tambah";
-import EditSyaratKetentuan from "../pages/admin/syarat-ketentuan/Edit";
-import AdminKebijakanPrivasi from "../pages/admin/kebijakan-privasi";
-import TambahKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Tambah";
-import EditKebijakanPrivasi from "../pages/admin/kebijakan-privasi/Edit";
-import FrontBlog from "../pages/Blog";
-import FrontBlogDetail from "../pages/Blog/Detail";
+import TopBarProgress from "react-topbar-progress-indicator";
+
+// front office
+const App = lazy(() => import("../App"));
+const Home = lazy(() => import("../pages/Home"));
+const Tentang = lazy(() => import("../pages/Tentang"));
+const Layanan = lazy(() => import("../pages/Layanan"));
+const MitraUsaha = lazy(() => import("../pages/MitraUsaha"));
+const MitraDriver = lazy(() => import("../pages/MitraDriver"));
+const KebijakanPrivasi = lazy(() => import("../pages/KebijakanPrivasi"));
+const SyaratKetentuan = lazy(() => import("../pages/SyaratKetentuan"));
+const SubKategoriSk = lazy(
+  () => import("../pages/SyaratKetentuan/SubKategori")
+);
+const DetailSk = lazy(() => import("../pages/SyaratKetentuan/Detail"));
+
+// back office
+const Admin = lazy(() => import("../pages/admin"));
+const Dashboard = lazy(() => import("../pages/admin/dashboard"));
+const Blog = lazy(() => import("../pages/admin/blog"));
+const Login = lazy(() => import("../pages/auth/Login"));
+const Tambah = lazy(() => import("../pages/admin/blog/Tambah"));
+const EditBlog = lazy(() => import("../pages/admin/blog/Edit"));
+const Logout = lazy(() => import("../pages/auth/Logout"));
+const Bantuan = lazy(() => import("../pages/admin/bantuan"));
+const TambahBantuan = lazy(() => import("../pages/admin/bantuan/Tambah"));
+const EditBantuan = lazy(() => import("../pages/admin/bantuan/Edit"));
+const BantuanFront = lazy(() => import("../pages/Bantuan"));
+const SubKategori = lazy(() => import("../pages/Bantuan/SubKategori"));
+const Detail = lazy(() => import("../pages/Bantuan/Detail"));
+const AdminSyaratKetentuan = lazy(
+  () => import("../pages/admin/syarat-ketentuan")
+);
+const TambahSyaratKetentuan = lazy(
+  () => import("../pages/admin/syarat-ketentuan/Tambah")
+);
+const EditSyaratKetentuan = lazy(
+  () => import("../pages/admin/syarat-ketentuan/Edit")
+);
+const AdminKebijakanPrivasi = lazy(
+  () => import("../pages/admin/kebijakan-privasi")
+);
+const TambahKebijakanPrivasi = lazy(
+  () => import("../pages/admin/kebijakan-privasi/Tambah")
+);
+const EditKebijakanPrivasi = lazy(
+  () => import("../pages/admin/kebijakan-privasi/Edit")
+);
+const FrontBlog = lazy(() => import("../pages/Blog"));
+const FrontBlogDetail = lazy(() => import("../pages/Blog/Detail"));
 
 const router = createBrowserRouter([
   {
@@ -84,8 +104,22 @@ const router = createBrowserRouter([
       { path: "syarat-ketentuan/:id/edit", element: <EditSyaratKetentuan /> },
     ],
   },
-  { path: "/admin/login", element: <Login /> },
-  { path: "/admin/logout", element: <Logout /> },
+  {
+    path: "/admin/login",
+    element: (
+      <Suspense fallback={<TopBarProgress />}>
+        <Login />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin/logout",
+    element: (
+      <Suspense fallback={<TopBarProgress />}>
+        <Logout />
+      </Suspense>
+    ),
+  },
 ]);
 
 export default router;

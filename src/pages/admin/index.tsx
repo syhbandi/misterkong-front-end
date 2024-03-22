@@ -11,10 +11,11 @@ import { useStore } from "zustand";
 import useUserStore, { userType } from "../../states/auth";
 import { useQuery } from "@tanstack/react-query";
 import { refreshToken } from "../../api/auth";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import TopBarProgress from "react-topbar-progress-indicator";
 const Index = () => {
   const navigate = useNavigate();
   const { user, setUser } = useStore(useUserStore);
@@ -51,9 +52,11 @@ const Index = () => {
       <div className="flex flex-col gap-5 min-h-screen relative lg:pl-64 font-roboto bg-gray-100">
         <Sidebar />
         <Navbar />
-        <div className="flex-1 px-5">
-          <Outlet />
-        </div>
+        <Suspense fallback={<TopBarProgress />}>
+          <div className="flex-1 px-5">
+            <Outlet />
+          </div>
+        </Suspense>
         <Footer />
       </div>
       <ToastContainer />

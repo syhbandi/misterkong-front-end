@@ -28,6 +28,7 @@
     "react-paginate": "^8.2.0",
     "react-router-dom": "^6.14.1",
     "react-toastify": "^10.0.4",
+    "react-topbar-progress-indicator": "^4.1.1",
     "use-debounce": "^10.0.0",
     "yup": "^1.3.3",
     "zustand": "^4.5.0"
