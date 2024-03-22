@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home />, path: "/" },
       { path: "tentang-kami", element: <Tentang /> },
       { path: "layanan", element: <Layanan /> },
       { path: "mitra-usaha", element: <MitraUsaha /> },
