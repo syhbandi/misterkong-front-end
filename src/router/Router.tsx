@@ -55,7 +55,11 @@ const FrontBlogDetail = lazy(() => import("../pages/Blog/Detail"));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Suspense fallback={<TopBarProgress />}>
+        <App />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
@@ -86,7 +90,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      <Suspense fallback={<TopBarProgress />}>
+        <Admin />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Dashboard /> },
